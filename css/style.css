@@ -64,3 +64,25 @@ header {}
 }
 
 /* header end */
+/* news section */
+main {
+    margin: 50px 0;
+}
+
+#news .card {
+    background-color: var(--secondary-bg-color);
+}
+
+.card .card-body .card-title {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* news section end */
+
+/* footer */
+footer {
+    background-color: var(--secondary-bg-color);
+}
+
+/* footer end */
