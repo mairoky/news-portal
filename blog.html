@@ -52,7 +52,58 @@
         </div>
     </header>
     <!-- header end -->
+    <main>
+        <section class="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>Q1. Differences between var, let, and const?</h4>
+                        <p><span>Ans: </span>The differences between var, let, and const variable declaration in
+                            JavaScript include:
+                            Variables declared with var and const are scoped to the immediate function body.
+                            Variables declared with the var keyword are hoisted. Hoisting means that the variable can be
+                            accessed in their enclosing scope even before they are declared.
+                            Variables declared with the let keyword are block-scoped, which means the variables will
+                            have scope to the immediate enclosing block.</p>
+                    </div>
+                    <div class="col-12">
+                        <h4>Q2. Difference between arrow function and normal function?</h4>
+                        JavaScript's arrow functions might seem the same as regular functions on the surface, but they
+                        have some very important differences:
+                        <ul>
+                            <li>Syntactical differences</li>
+                            <li>this value (execution context)</li>
+                            <li>Usage as methods</li>
+                            <li>Usage as constructors</li>
+                            <li>arguments binding</li>
+                        </ul>
+                    </div>
+                    <div class="col-12">
+                        <h4>Q3. Difference between .forEach(), .map(), .filter(), & .find()?</h4>
+                        <p><code>.forEach()</code>, is used to execute the same code on every element in an array but
+                            does not change the array and it returns undefined.</p>
+                        <p><code>.map()</code>, executes the same code on every element in an array and returns a new
+                            array with the updated elements.</p>
+                        <p><code>.filter()</code>, checks every element in an array to see if it meets a certain
+                            criteria and returns a new array with the elements that return truthy for the criteria.</p>
+                        <p><code>.find()</code>, method returns the value of the first element that passes a test. It
+                            executes a function for each array element & returns undefined if no elements are found</p>
 
+                    </div>
+                    <div class="col-12">
+                        <h4>Q4. Why we use template string?</h4>
+                        <p>Template string provide an easy way to interpolate variables and expressions into strings.
+                            The method is called string interpolation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- footer start -->
+    <footer class="text-center p-5">
+        <p class="m-0">Copyright &#169; 2023 News Cast, All Rights Reserved.</p>
+    </footer>
+    <!-- footer end -->
 </body>
 
 </html>
