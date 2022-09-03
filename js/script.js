@@ -122,7 +122,7 @@ const showNewsDetails = (newsDetail) => {
     newsTitle.innerText = `${newsDetail.title}`;
     const newsDetailModal = document.getElementById('news-detail');
     newsDetailModal.innerHTML = `
-        <h4></h4>
+        <h5 class="">Rating: ${newsDetail.rating.number ? newsDetail.rating.number : 'No data found!'}, Badge: ${newsDetail.rating.badge ? newsDetail.rating.badge : 'No data found!'}</h5>
         <div class="d-flex justify-content-between align-items-center">
             <div class="author-info p-2 d-flex align-items-center">
                 <div class="image">
@@ -139,9 +139,8 @@ const showNewsDetails = (newsDetail) => {
             </div>
         </div>
         <div class="mt-2">
-        <img src="${newsDetail.image_url}" class="img-fluid">
+        <img src="${newsDetail.image_url}" class="img-fluid w-100">
         </div>
-        <p>${newsDetail.details}</p>
+        <p class="mt-3">${newsDetail.details}</p>
     `;
-
 }
