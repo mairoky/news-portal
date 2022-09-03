@@ -37,43 +37,37 @@ const loadNews = async (category_id) => {
 }
 // display news
 const displayNews = news => {
-    console.log(news);
     notifyFunc(news);
     // sorting by total_views
     news.sort((a, b) => b.total_view - a.total_view);
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     news.forEach(singleNews => {
-        console.log(singleNews);
         const newsDiv = document.createElement('div');
-        newsDiv.classList.add('col-md-6', 'col-12');
+        newsDiv.classList.add('col-12');
         newsDiv.innerHTML = `
-        <div class="card mb-3 border-0">
-        <div class="row g-0">
-            <div class="col-12">
-                <img src="${singleNews.image_url}" class="img-fluid">
+        <div onclick="newsDetails('${singleNews._id}')" class="card border-0 p-3">
+        <div class="row g-0 align-items-center">
+            <div class="col-3">
+                <img src="${singleNews.thumbnail_url}" class="img-fluid">
             </div>
-            <div class="col-12">
+            <div class="col-9">
                 <div class="card-body">
                     <h4 class="card-title">${singleNews.title}</h4>
-                    <p class="card-text">This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a little bit longer.
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a little bit longer.
-                    </p>
-                    <div class="d-flex align-items-center">
+                    <p class="card-text">${singleNews.details.slice(0, 300)}...</p>
+                    <div class="d-flex justify-content-between align-items-center">
                         <div class="author-info p-2 d-flex align-items-center">
-                            <div class="image bg-primary rounded-circle">
-                                <img src="" alt="" class="img-fluid">
+                            <div class="image">
+                                <img src="${singleNews.author.img}" alt="" class="img-fluid rounded-circle">
                             </div>
-                            <div class="info">
+                            <div class="info ms-3">
                                 <p class="m-0">${singleNews.author.name ? singleNews.author.name : 'No Data Found!'}</p>
                                 <p class="m-0"><small>${singleNews.author.published_date ? singleNews.author.published_date : 'No Data Found!'}</small></p>
                             </div>
                         </div>
                         <div class="news-views p-2">
                             <i class="fa-regular fa-eye"></i>
-                            <span>1.5M</span>
+                            <span class="ms-2">${singleNews.total_view}</span>
                         </div>
                         <div class="rating p-2">
                             <i class="fa-solid fa-star"></i>
@@ -103,8 +97,13 @@ const notifyFunc = (news) => {
     if (news.length >= 0) {
         const notifyText = document.createElement('p');
         notifyText.classList.add('m-0');
-        notifyText.innerText = `${news.length} items found!`;
+        notifyText.innerText = `${news.length > 0 ? news.length + ' Items Found!' : 'No Item Found!'}`;
         notifyContainer.appendChild(notifyText);
         notifyContainer.classList.remove('d-none');
     }
+}
+
+// show news details
+const newsDetails = (news_id) => {
+    console.log(news_id);
 }
