@@ -35,6 +35,7 @@ const loadNews = async (category_id) => {
         console.error(error);
     }
 }
+
 // display news
 const displayNews = news => {
     notifyFunc(news);
@@ -54,7 +55,8 @@ const displayNews = news => {
             <div class="col-9">
                 <div class="card-body">
                     <h4 class="card-title">${singleNews.title}</h4>
-                    <p class="card-text">${singleNews.details.slice(0, 300)}...</p>
+                    <p class="card-text">${singleNews.details.slice(0, 200)}.</p>
+                    <p class="card-text">${singleNews.details.slice(201, 300)}...</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="author-info p-2 d-flex align-items-center">
                             <div class="image">
@@ -67,7 +69,7 @@ const displayNews = news => {
                         </div>
                         <div class="news-views p-2">
                             <i class="fa-regular fa-eye"></i>
-                            <span class="ms-2">${singleNews.total_view}</span>
+                            <span class="ms-2">${singleNews.total_view ? singleNews.total_view : 'No data found!'}</span>
                         </div>
                         <div class="rating p-2">
                             <i class="fa-solid fa-star"></i>
@@ -135,7 +137,7 @@ const showNewsDetails = (newsDetail) => {
             </div>
             <div class="news-views p-2">
                 <i class="fa-regular fa-eye"></i>
-                    <span class="ms-2">${newsDetail.total_view}</span>
+                    <span class="ms-2">${newsDetail.total_view ? newsDetail.total_view : 'No data found!'}</span>
             </div>
         </div>
         <div class="mt-2">
