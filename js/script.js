@@ -69,8 +69,8 @@ const displayNews = news => {
             </div>
             <div class="col-md-9 d-block">
                 <div class="card-body">
-                    <h4 class="card-title">${singleNews.title}</h4>
-                    <p class="card-text">${singleNews.details.slice(0, 200)}.</p>
+                    <h4 class="card-title mb-3">${singleNews.title}</h4>
+                    <p class="card-text mb-3">${singleNews.details.slice(0, 200)}.</p>
                     <p class="card-text">${singleNews.details.slice(201, 300)}...</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="author-info p-2 d-flex align-items-center">
