@@ -1,3 +1,4 @@
+
 // fetch category from api
 const loadNewsCategory = async () => {
     const url = 'https://openapi.programming-hero.com/api/news/categories';
@@ -11,6 +12,7 @@ const loadNewsCategory = async () => {
     }
 }
 loadNewsCategory();
+
 // display category
 const displayCategories = categories => {
     const categoryList = document.getElementById('category-list');
@@ -18,11 +20,22 @@ const displayCategories = categories => {
         const listItem = document.createElement('li');
         listItem.classList.add('nav-item');
         listItem.innerHTML = `
-        <a onclick="loadNews('${category.category_id}')" class="nav-link">${category.category_name}</a>
+        <a onclick="loadNews('${category.category_id}')" class="nav-link category-item">${category.category_name}</a>
         `;
         categoryList.appendChild(listItem);
     });
+    // active category item
+    const categoryItem = document.querySelectorAll('.category-item');
+    categoryItem[7].classList.add('active');
+    categoryItem.forEach(item => {
+        item.addEventListener('click', function () {
+            categoryItem.forEach(itm => itm.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
 }
+
+
 // load news
 const loadNews = async (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
@@ -93,7 +106,7 @@ const displayNews = news => {
 }
 
 // notify
-const notifyFunc = (news) => {
+const notifyFunc = news => {
     const notifyContainer = document.getElementById('notify');
     notifyContainer.textContent = '';
     if (news.length >= 0) {
@@ -119,7 +132,6 @@ const newsDetails = async (news_id) => {
 }
 // show news details on modal
 const showNewsDetails = (newsDetail) => {
-    console.log(newsDetail);
     const newsTitle = document.getElementById('newsModalLabel');
     newsTitle.innerText = `${newsDetail.title}`;
     const newsDetailModal = document.getElementById('news-detail');
