@@ -2,7 +2,7 @@
 
 :root {
     --primary-color: #3d3d3d;
-    --secondary-color: #9a4f29;
+    --secondary-color: #1c7b4f;
     --primary-bg-color: #f1f1f1;
     --secondary-bg-color: #f9f9f9;
     --heading-font-color: #151524;
@@ -27,8 +27,6 @@ h5 {
 }
 
 /* header */
-header {}
-
 /* navbar */
 .navbar-brand .text-logo {
     font-size: 40px;
@@ -84,6 +82,19 @@ main {
 .author-info .image {
     width: 50px;
     height: 50px;
+}
+
+.modal-header .modal-title {
+    font-size: 20px;
+}
+
+.modal-body .rating-text {
+    font-size: 16px;
+}
+
+.modal-footer button {
+    font-size: 16px;
+    color: var(--secondary-bg-color);
 }
 
 /* news section end */
