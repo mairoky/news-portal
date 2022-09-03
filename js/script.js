@@ -46,7 +46,7 @@ const displayNews = news => {
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('col-12');
         newsDiv.innerHTML = `
-        <div onclick="newsDetails('${singleNews._id}')" class="card border-0 p-3">
+        <div onclick="newsDetails('${singleNews._id}')" class="card border-0 p-3" data-bs-toggle="modal" data-bs-target="#newsModal">
         <div class="row g-0 align-items-center">
             <div class="col-3">
                 <img src="${singleNews.thumbnail_url}" class="img-fluid">
@@ -103,7 +103,45 @@ const notifyFunc = (news) => {
     }
 }
 
-// show news details
-const newsDetails = (news_id) => {
-    console.log(news_id);
+// fetch news details
+const newsDetails = async (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        showNewsDetails(data.data[0]);
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+// show news details on modal
+const showNewsDetails = (newsDetail) => {
+    console.log(newsDetail);
+    const newsTitle = document.getElementById('newsModalLabel');
+    newsTitle.innerText = `${newsDetail.title}`;
+    const newsDetailModal = document.getElementById('news-detail');
+    newsDetailModal.innerHTML = `
+        <h4></h4>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="author-info p-2 d-flex align-items-center">
+                <div class="image">
+                    <img src="${newsDetail.author.img}" alt="" class="img-fluid rounded-circle">
+                </div>
+                <div class="info ms-3">
+                    <p class="m-0">${newsDetail.author.name ? newsDetail.author.name : 'No Data Found!'}</p>
+                    <p class="m-0"><small>${newsDetail.author.published_date ? newsDetail.author.published_date : 'No Data Found!'}</small></p>
+                </div>
+            </div>
+            <div class="news-views p-2">
+                <i class="fa-regular fa-eye"></i>
+                    <span class="ms-2">${newsDetail.total_view}</span>
+            </div>
+        </div>
+        <div class="mt-2">
+        <img src="${newsDetail.image_url}" class="img-fluid">
+        </div>
+        <p>${newsDetail.details}</p>
+    `;
+
 }
