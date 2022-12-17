@@ -1,3 +1,5 @@
-# b6-news-portal-assignment-mairoky
+# news-portal
+
+## JavaScript DOM and Fetch() Data using API
+
 Live link:- https://newscast-pro.netlify.app/
-b6-news-portal-assignment-mairoky created by GitHub Classroom
